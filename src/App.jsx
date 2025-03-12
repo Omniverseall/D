@@ -1,41 +1,20 @@
-import { useState, useEffect } from 'react';
-import Navbar from "./components/Navbar";
-import { Routes, Route } from "react-router-dom";
-import Home from "./components/sections/Home";
-import About from "./components/sections/About";
-import Contact from "./components/sections/Contact";
-import Products from "./components/sections/Products";
-import RegistrationForm from "./components/sections/RegistrationForm"; // Import the RegistrationForm component
+import { Route, Routes } from "react-router-dom"
+import EditPost from "./pages/EditPost"
+import Post from "./pages/Post"
+import PostLists from "./pages/PostLists"
 
-export default function App() {
-  // Initialize theme: get from localStorage or set to 'light' by default
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-
-  // Update the <html> class and save theme to localStorage on change
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [theme]);
-
-  // Theme toggle function
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
+function App() {
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+    <div>
+      <h1>Awesome blog</h1>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/register" element={<RegistrationForm />} /> {/* Add the registration route */}
+        <Route path="/" element={<PostLists />} />
+        <Route path="/post/:id" element={<Post />} />
+        <Route path="/post/:id/edit" element={<EditPost />} />
       </Routes>
     </div>
-  );
+  )
 }
+
+export default App
