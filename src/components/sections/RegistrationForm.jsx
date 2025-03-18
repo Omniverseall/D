@@ -8,7 +8,7 @@ const RegistrationForm = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-800 py-6">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-800 py-40">
             <div className="bg-white dark:bg-gray-900 shadow-lg rounded-lg p-8 w-full max-w-4xl mx-auto">
                 <h2 className="text-2xl font-semibold text-gray-700 dark:text-white mb-6">
                     Registration
