@@ -19,11 +19,12 @@ const App = () => {
   });
 
   useEffect(() => {
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-      setTheme(currentTheme);
+    if (theme) {
+      document.documentElement.classList.remove('dark', 'light');
+      document.documentElement.classList.add(theme);
+      localStorage.setItem('theme', theme);
     }
-  }, []);
+  }, [theme]);
 
   return (
     <div className={`document-body ${theme} mx-4 sm:mx-[10%]`}>
