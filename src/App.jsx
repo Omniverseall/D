@@ -1,6 +1,4 @@
-
 import { Route, Routes } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import Home from './pages/Home'
 import Doctors from './pages/Doctors'
 import Login from './pages/Login'
@@ -13,21 +11,8 @@ import Navbar from './component/Navbar'
 import Footer from './component/Footer'
 
 const App = () => {
-  const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('theme');
-    return savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  });
-
-  useEffect(() => {
-    if (theme) {
-      document.documentElement.classList.remove('dark', 'light');
-      document.documentElement.classList.add(theme);
-      localStorage.setItem('theme', theme);
-    }
-  }, [theme]);
-
   return (
-    <div className={`mx-4 sm:mx-[10%] ${theme}`}>
+    <div className=' mx-4 sm:mx-[10%]'>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />}/>
