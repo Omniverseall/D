@@ -34,13 +34,12 @@ body {
   color: #F1F1F1;
 }
 
-/* Improve contrast for light mode text */
-.light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
-  color: #222222;
-}
-
-.light p, .light span, .light div, .light a {
-  color: #333333;
+/* Set all text to black in light mode */
+.light h1, .light h2, .light h3, .light h4, .light h5, .light h6,
+.light p, .light span, .light div, .light a,
+.light button, .light label, .light input, .light textarea,
+.light li, .light strong, .light em, .light small {
+  color: #000000 !important;
 }
 
 a.active hr {
