@@ -30,7 +30,7 @@ body {
   color: #FFFFFF;
 }
 
-.dark p, .dark span, .dark div {
+.dark p, .dark span, .dark div, .dark a {
   color: #F1F1F1;
 }
 
@@ -39,7 +39,7 @@ body {
   color: #222222;
 }
 
-.light p, .light span, .light div {
+.light p, .light span, .light div, .light a {
   color: #333333;
 }
 
