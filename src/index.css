@@ -15,30 +15,73 @@
   --text-color: #F1F1F1;
 }
 
-*{
-    font-family: "Outfit", sans-serif;
+* {
+  font-family: "Outfit", sans-serif;
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Improve contrast for dark mode text */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #FFFFFF;
+}
+
+.dark p, .dark span, .dark div {
+  color: #F1F1F1;
+}
+
+/* Improve contrast for light mode text */
+.light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
+  color: #222222;
+}
+
+.light p, .light span, .light div {
+  color: #333333;
 }
 
 a.active hr {
-    display: block;
+  display: block;
 }
-::-webkit-scrollbar{
-    @apply hidden
+
+::-webkit-scrollbar {
+  @apply hidden
 }
-@media (max-width:740px){
-    .active a {
-        @apply text-white bg-primary;
-    }
+
+@media (max-width:740px) {
+  .active a {
+    @apply text-white bg-primary;
+  }
+  
+  /* Improve mobile text visibility */
+  h1, h2, h3 {
+    @apply text-lg font-bold;
+  }
+  
+  p, span, div {
+    @apply text-base;
+  }
+  
+  /* Make theme toggle more visible on mobile */
+  .theme-toggle {
+    @apply p-3;
+  }
 }
 
 @layer components {
   .theme-icon {
-      @apply w-6 h-6 cursor-pointer;
+    @apply w-6 h-6 cursor-pointer;
+  }
+  
+  /* Additional classes for better visibility */
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark px-4 py-2 rounded-lg transition-colors;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-4;
   }
 }
