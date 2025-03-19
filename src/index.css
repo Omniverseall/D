@@ -1,12 +1,30 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background-color: #FFFFFF;
+  --text-color: #333333;
+}
+
+.dark {
+  --background-color: #121212;
+  --text-color: #F1F1F1;
+}
+
 *{
     font-family: "Outfit", sans-serif;
 }
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 a.active hr {
     display: block;
 }
@@ -17,4 +35,16 @@ a.active hr {
     .active a {
         @apply text-white bg-primary;
     }
+}
+
+.dark .document-body {
+    @apply bg-background-dark text-text-dark;
+}
+
+.light .document-body {
+    @apply bg-background-light text-text-light;
+}
+
+.theme-icon {
+    @apply w-6 h-6 cursor-pointer;
 }
