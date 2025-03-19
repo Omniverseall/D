@@ -27,7 +27,7 @@ const App = () => {
   }, [theme]);
 
   return (
-    <div className={`document-body ${theme} mx-4 sm:mx-[10%]`}>
+    <div className="mx-4 sm:mx-[10%]">
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />}/>

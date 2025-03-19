@@ -38,14 +38,6 @@ a.active hr {
 }
 
 @layer components {
-  .dark .document-body {
-      @apply bg-background-dark text-text-dark;
-  }
-
-  .light .document-body {
-      @apply bg-background-light text-text-light;
-  }
-
   .theme-icon {
       @apply w-6 h-6 cursor-pointer;
   }
