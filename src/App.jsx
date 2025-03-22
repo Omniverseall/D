@@ -1,32 +1,40 @@
-import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import Doctors from './pages/Doctors'
-import Login from './pages/Login'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import MyProfile from './pages/MyProfile'
-import MyAppointments from './pages/MyAppointments'
-import Appointment from './pages/Appointment'
-import Navbar from './component/Navbar'
-import Footer from './component/Footer'
+import React, { useContext, useEffect } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Login from "./pages/Login/Login";
+import Chat from "./pages/Chat/Chat";
+import ProfileUpdate from "./pages/ProfileUpdate/ProfileUpdate";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { onAuthStateChanged } from "firebase/auth/web-extension";
+import { auth } from "./config/firebase";
+import { AppContext } from "./context/AppContext";
 
-const App = () => {
-  return (
-    <div className=' mx-4 sm:mx-[10%]'>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/doctors' element={<Doctors />}/>
-        <Route path='/doctors/:speciality' element={<Doctors />}/>
-        <Route path='/login' element={<Login />}/>
-        <Route path='/about' element={<About />}/>
-        <Route path='/contact' element={<Contact />}/>
-        <Route path='/my-profile' element={<MyProfile />}/>
-        <Route path='/my-appointment' element={<MyAppointments />}/>
-        <Route path='/appointment/:docId' element={<Appointment />}/>
-      </Routes>
-      <Footer />
-    </div>
+const App = () => {  
+  const navigate = useNavigate(); 
+  const {loadUserData} = useContext(AppContext)
+
+  useEffect(()=>{
+    onAuthStateChanged(auth, async (user)=>{
+      if (user) { 
+        navigate('/chat')
+        await loadUserData(user.uid)
+        
+      } else { 
+        navigate('/')
+        
+      }
+    })
+  },[])
+  return ( 
+    
+    <>
+    <ToastContainer />
+    <Routes>
+      <Route path="/" element={<Login/>} />
+      <Route path="/chat" element={<Chat />} />
+      <Route path="/profile" element={< ProfileUpdate />} />
+    </Routes>
+    </>
   )
 }
 
